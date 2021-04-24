@@ -1,20 +1,39 @@
-
 public class vec {
 
 	double x;
 	double y;
 	double z;
 	
-  //vec constructor
 	public vec(double x,double y,double z) {
 		this.x=x;
 		this.y=y;
 		this.z=z;
 	}
 	
-  //returns the vector in string readable form
+	//returns a readable string of the vector with 3 decimal point precision
 	public String toString() {
 		return String.format("<%.3f,%.3f,%.3f>", x,y,z);	
+	}
+	//returns a readable string of the vector with prec decimal point precision
+	public String toString(int prec) {
+		switch(prec) {
+			case 0:
+				return String.format("<%.0f,%.0f,%.0f>", x,y,z);
+			case 1:
+				return String.format("<%.1f,%.1f,%.1f>", x,y,z);
+			case 2:
+				return String.format("<%.2f,%.2f,%.2f>", x,y,z);
+			case 3:
+				return String.format("<%.3f,%.3f,%.3f>", x,y,z);
+			case 4:
+				return String.format("<%.4f,%.4f,%.4f>", x,y,z);
+			case 5:
+				return String.format("<%.5f,%.5f,%.5f>", x,y,z);
+			case 6:
+				return String.format("<%.6f,%.6f,%.6f>", x,y,z);
+			default:
+				return "precision level outside permitted values";
+		}
 	}
 	
 	//subtract two vectors
@@ -23,7 +42,7 @@ public class vec {
 	}
 	//or
 	public vec sub(vec a) {
-		return new vec(a.x-this.x,a.y-this.y,a.z-this.z);
+		return new vec(this.x-a.x,this.y-a.y,this.z-a.z);
 	}
 	
 	//add two vectors
@@ -44,7 +63,7 @@ public class vec {
 		return new vec(this.x/a,this.y/a,this.z/a);
 	}
 	
-	//divide a vector by a double
+	//multiply a vector by a double
 	public static vec mult(vec a,double b) {
 		return new vec(a.x*b,a.y*b,a.z*b);
 	}
@@ -62,7 +81,7 @@ public class vec {
 		return new vec(this.x/a,this.y/a,this.z/a);
 	}
 		
-	//divide a vector by a integer
+	//multiply a vector by a integer
 	public static vec mult(vec a,int b) {
 		return new vec(a.x*b,a.y*b,a.z*b);
 	}
@@ -119,10 +138,10 @@ public class vec {
 		return false;
 	}
 	//or
-	public boolean equal(vec a) {
-		if(a.x==this.x) {
-			if(a.y==this.y) {
-				if(a.z==this.z) {
+	public boolean equals(vec a) {
+		if(a.x==x) {
+			if(a.y==y) {
+				if(a.z==z) {
 					return true;
 				}
 			}

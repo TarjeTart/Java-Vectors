@@ -11,6 +11,7 @@ public class vec {
 	}
 	
 	//returns a readable string of the vector with 3 decimal point precision
+	@Override
 	public String toString() {
 		return String.format("<%.3f,%.3f,%.3f>", x,y,z);	
 	}
@@ -41,8 +42,10 @@ public class vec {
 		return new vec(a.x-b.x,a.y-b.y,a.z-b.z);
 	}
 	//or
-	public vec sub(vec a) {
-		return new vec(this.x-a.x,this.y-a.y,this.z-a.z);
+	public void sub(vec a) {
+		this.x-=a.x;
+		this.y-=a.y;
+		this.z-=a.z;
 	}
 	
 	//add two vectors
